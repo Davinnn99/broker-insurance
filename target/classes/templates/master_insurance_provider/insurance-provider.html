@@ -1,0 +1,112 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}" th:with="currentPage='MASTER-INSURANCE-PROVIDER', parrentMenu='COMPONENT'">
+<head>
+  <title>Master Insurance Provider</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+
+<div layout:fragment="customCss"></div>
+
+<div layout:fragment="pageHeader">
+  <h1>Master Insurance Provider</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Component</a></li>
+      <li class="breadcrumb-item active">Insurance Provider</li>
+    </ol>
+  </nav>
+</div>
+
+<div layout:fragment="content" class="container mx-auto">
+  <div class="bg-white rounded-lg shadow-lg p-5">
+    <div class="flex justify-between mb-4">
+      <input type="text" id="searchInput" class="border rounded-lg p-2 w-1/3" placeholder="Search all columns...">
+      <a th:href="@{/component/insurance_provider/add}" style="background-color: #36558d;" class="text-white px-4 py-2 rounded-lg shadow">Add New Insurance Provider</a>
+    </div>
+
+    <table class="min-w-full border border-gray-300 mt-3 shadow-lg">
+      <thead>
+      <tr style="background-color: #36558d;" class="text-white">
+        <th class="border border-gray-300 px-4 py-2">Name</th>
+        <th class="border border-gray-300 px-4 py-2">Occupation</th>
+        <th class="border border-gray-300 px-4 py-2">Email</th>
+        <th class="border border-gray-300 px-4 py-2">Phone Number</th>
+        <th class="border border-gray-300 px-4 py-2">PLC Name</th>
+        <th class="border border-gray-300 px-4 py-2">PLC Phone Number</th>
+        <th class="border border-gray-300 px-4 py-2">Action</th>
+      </tr>
+      </thead>
+      <tbody id="clientTable">
+      <tr class="hover:bg-gray-100">
+        <td class="border border-gray-300 px-4 py-2">Davin Aji Wibowo</td>
+        <td class="border border-gray-300 px-4 py-2">Engineer</td>
+        <td class="border border-gray-300 px-4 py-2">johndoe@example.com</td>
+        <td class="border border-gray-300 px-4 py-2">123-456-7890</td>
+        <td class="border border-gray-300 px-4 py-2">ABC PLC</td>
+        <td class="border border-gray-300 px-4 py-2">098-765-4321</td>
+        <td class="border border-gray-300 px-4 py-2">
+          <div class="flex justify-center space-x-2">
+            <a th:href="@{/component/insurance_provider/edit}">
+              <i class="fas fa-edit text-yellow-500 cursor-pointer hover:bg-yellow-500 hover:text-white p-2 rounded-full border-2 border-yellow-500"></i>
+            </a>
+            <i class="fas fa-trash text-red-500 cursor-pointer hover:bg-red-500 hover:text-white p-2 rounded-full border-2 border-red-500"></i>
+          </div>
+        </td>
+      </tr>
+      <tr class="hover:bg-gray-100">
+        <td class="border border-gray-300 px-4 py-2">Ananda David Saputra</td>
+        <td class="border border-gray-300 px-4 py-2">Designer</td>
+        <td class="border border-gray-300 px-4 py-2">janesmith@example.com</td>
+        <td class="border border-gray-300 px-4 py-2">321-654-0987</td>
+        <td class="border border-gray-300 px-4 py-2">XYZ PLC</td>
+        <td class="border border-gray-300 px-4 py-2">567-890-1234</td>
+        <td class="border border-gray-300 px-4 py-2">
+          <div class="flex justify-center space-x-2">
+            <a th:href="@{/component/insurance_provider/edit}">
+              <i class="fas fa-edit text-yellow-500 cursor-pointer hover:bg-yellow-500 hover:text-white p-2 rounded-full border-2 border-yellow-500"></i>
+            </a>
+            <i class="fas fa-trash text-red-500 cursor-pointer hover:bg-red-500 hover:text-white p-2 rounded-full border-2 border-red-500"></i>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div layout:fragment="customScript">
+  <script>
+    document.getElementById('searchInput').addEventListener('keyup', function() {
+        var searchText = this.value.toLowerCase();
+        var tableRows = document.querySelectorAll('#clientTable tr');
+
+        tableRows.forEach(function(row) {
+            var show = false;
+            var cells = row.getElementsByTagName('td');
+
+            for (var i = 0; i < cells.length - 1; i++) {
+                var cellText = cells[i].textContent.toLowerCase();
+                if (cellText.includes(searchText)) {
+                    show = true;
+                    break;
+                }
+            }
+
+            row.style.display = show ? '' : 'none';
+        });
+    });
+
+    document.querySelectorAll('.fa-trash').forEach(function(deleteIcon) {
+        deleteIcon.addEventListener('click', function() {
+            if (confirm('Are you sure you want to delete this client?')) {
+                this.closest('tr').remove();
+            }
+        });
+    });
+  </script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}" th:with="currentPage='PLACEMENT'">
+<body>
+<div layout:fragment="customCss">
+</div>
+
+<div layout:fragment="pageHeader">
+    <h1>Placement - Slip</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Placement</a></li>
+            <li class="breadcrumb-item"><a href="#">Form</a></li>
+            <li class="breadcrumb-item active">Slip</li>
+        </ol>
+    </nav>
+</div>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Placement Info</h5>
+                    <div class="row g-3">
+
+                        <div class="col-md-6">
+                            <label class="form-label">Placement Number</label>
+                            <input type="text" class="form-control" value="11.000.23241" disabled />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Placement Date</label>
+                            <input type="date" class="form-control" value="01/02/2024" disabled />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Note / Description</label>
+                            <textarea class="form-control" disabled>Lorem Ipsum is simply dummy</textarea>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Request Form</label>
+                            <input type="date" class="form-control" value="Request A" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <h5 class="card-title">Document Slip</h5>
+                        <div class="ms-auto pt-3">
+                            <button class="btn btn-outline-primary btn-xs"
+                                    data-bs-toggle="modal" data-bs-target="#slipModal">Add Slip</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" nowrap>Date</th>
+                                <th scope="col" nowrap>Total Premi</th>
+                                <th scope="col" nowrap>Doc Slip</th>
+                                <th scope="col" class="text-end">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>01/02/2024</td>
+                                <td>1,000,000</td>
+                                <td>Doc1.pdf</td>
+                                <td class="text-end py-1">
+                                    <button class="btn btn-outline-primary btn-sm">Detail</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>02/02/2024</td>
+                                <td>1,000,000</td>
+                                <td>Doc2.pdf</td>
+                                <td class="text-end py-1">
+                                    <button class="btn btn-outline-primary btn-sm">Detail</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>03/02/2024</td>
+                                <td>1,000,000</td>
+                                <td>Doc3.pdf</td>
+                                <td class="text-end py-1">
+                                    <button class="btn btn-outline-primary btn-sm">Detail</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <a class="btn btn-primary" th:href="@{/placement/form}">Submit</a>
+            <button class="btn btn-danger" type="reset">Clear</button>
+        </div>
+    </div>
+
+<!-- ======================= Modal Risk Info ============================= -->
+    <div class="modal fade" id="slipModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Form Slip</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label">Document Slip</label>
+                            <input type="file" class="form-control" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <h5>Premi Calculation</h5>
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="4">
+                                        <div class="d-flex">
+                                            Unit 1 :
+                                            <button class="btn btn-outline-primary btn-sm ms-auto"><i class="bi bi-plus-circle"></i> Add Premium</button>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <select class="form-select">
+                                            <option selected>Comprehensive</option>
+                                            <option>TLO</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="100,000,000" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="1.00%" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="1,000,000" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select class="form-select">
+                                            <option>Comprehensive</option>
+                                            <option selected>TLO</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="200,000,000" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="0.75%" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="1,500,000" class="form-control" />
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="4">
+                                        <div class="d-flex">
+                                            Unit 2 :
+                                            <button class="btn btn-outline-primary btn-sm ms-auto"><i class="bi bi-plus-circle"></i> Add Premium</button>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <select class="form-select">
+                                            <option selected>Comprehensive</option>
+                                            <option>TLO</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="100,000,000" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="1.00%" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="1,000,000" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select class="form-select">
+                                            <option>Comprehensive</option>
+                                            <option selected>TLO</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="200,000,000" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="0.75%" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="1,500,000" class="form-control" />
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div layout:fragment="customScript">
+    <script>
+        $("#requestFormSelect").on("change", function() {
+            $("#requestFormDetail").show();
+        });
+    </script>
+</div>
+</body>
+</html>

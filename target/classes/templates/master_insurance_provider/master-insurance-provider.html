@@ -1,0 +1,191 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}" th:with="currentPage='MASTER-INSURANCE-PROVIDER', parrentMenu='COMPONENT'">
+<head>
+  <title>Add New Insurance Provider</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script>
+    function handleStatusChange() {
+        const holdingCheckbox = document.getElementById('subsidiaryCompany');
+        const holdingCompanySelect = document.getElementById('holdingCompanySelect');
+
+        if (holdingCheckbox.checked) {
+            holdingCompanySelect.disabled = false;
+        } else {
+            holdingCompanySelect.disabled = true;
+            holdingCompanySelect.value = '';
+        }
+    }
+  </script>
+</head>
+<body>
+
+<div layout:fragment="customCss"></div>
+
+<div layout:fragment="pageHeader">
+  <h1>Add New Insurance Provider</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Component</a></li>
+      <li class="breadcrumb-item"><a th:href="@{/component/master_clause}">Master Insurance Provider</a></li>
+      <li class="breadcrumb-item active">Add New Insurance Provider</li>
+    </ol>
+  </nav>
+</div>
+
+<div layout:fragment="content" class="container mx-auto">
+  <div class="bg-white rounded-lg shadow-lg p-5">
+    <form class="mb-4" action="#" method="post">
+      <!-- Nama -->
+      <div class="form-group mb-4">
+        <label for="nama" class="block text-gray-700 font-semibold mb-2">Nama</label>
+        <input type="text" id="nama" name="nama" class="border rounded-lg p-2 w-full" required>
+      </div>
+
+      <!-- Status -->
+      <div class="form-group mb-4">
+        <label class="block text-gray-700 font-semibold mb-2">Status</label>
+        <div class="flex space-x-4">
+          <input type="checkbox" id="holdingCompany" name="status" value="Holding Company"> Holding Company
+          <input type="checkbox" id="subsidiaryCompany" name="status" value="Subsidiary Company" onchange="handleStatusChange()"> Subsidiary Company
+        </div>
+      </div>
+
+      <!-- Holding Company Combobox -->
+      <div class="form-group mb-4">
+        <label for="holdingCompanySelect" class="block text-gray-700 font-semibold mb-2">Holding Company</label>
+        <select id="holdingCompanySelect" name="holdingCompany" class="border rounded-lg p-2 w-full" disabled>
+          <option value="" disabled selected>Select Company</option>
+          <option value="Company A">Company A</option>
+          <option value="Company B">Company B</option>
+          <option value="Company C">Company C</option>
+        </select>
+      </div>
+
+      <!-- Occupation -->
+      <div class="form-group mb-4">
+        <label for="occupation" class="block text-gray-700 font-semibold mb-2">Occupation</label>
+        <select id="occupation" name="occupation" class="border rounded-lg p-2 w-full" required>
+          <option value="" disabled selected>Select Occupation</option>
+          <option value="Engineer">Engineer</option>
+          <option value="Doctor">Doctor</option>
+          <option value="Teacher">Teacher</option>
+          <option value="Designer">Designer</option>
+          <option value="Others">Others</option>
+        </select>
+      </div>
+
+      <!-- Address -->
+      <div class="form-group mb-4">
+        <label for="address" class="block text-gray-700 font-semibold mb-2">Address</label>
+        <textarea id="address" name="address" class="border rounded-lg p-2 w-full" rows="4" required></textarea>
+      </div>
+
+      <!-- Province -->
+      <div class="form-group mb-4">
+        <label for="province" class="block text-gray-700 font-semibold mb-2">Province</label>
+        <select id="province" name="province" class="border rounded-lg p-2 w-full" required>
+          <option value="" disabled selected>Select Province</option>
+          <option value="Province A">Province A</option>
+          <option value="Province B">Province B</option>
+          <option value="Province C">Province C</option>
+        </select>
+      </div>
+
+      <!-- District -->
+      <div class="form-group mb-4">
+        <label for="district" class="block text-gray-700 font-semibold mb-2">District</label>
+        <select id="district" name="district" class="border rounded-lg p-2 w-full" required>
+          <option value="" disabled selected>Select District</option>
+          <option value="District A">District A</option>
+          <option value="District B">District B</option>
+          <option value="District C">District C</option>
+        </select>
+      </div>
+
+      <!-- Sub District -->
+      <div class="form-group mb-4">
+        <label for="sub-district" class="block text-gray-700 font-semibold mb-2">Sub District</label>
+        <select id="sub-district" name="sub-district" class="border rounded-lg p-2 w-full" required>
+          <option value="" disabled selected>Select Sub District</option>
+          <option value="Sub District A">Sub District A</option>
+          <option value="Sub District B">Sub District B</option>
+          <option value="Sub District C">Sub District C</option>
+        </select>
+      </div>
+
+      <!-- Urban Village -->
+      <div class="form-group mb-4">
+        <label for="urban-village" class="block text-gray-700 font-semibold mb-2">Urban Village</label>
+        <select id="urban-village" name="urban-village" class="border rounded-lg p-2 w-full" required>
+          <option value="" disabled selected>Select Urban Village</option>
+          <option value="Urban Village A">Urban Village A</option>
+          <option value="Urban Village B">Urban Village B</option>
+          <option value="Urban Village C">Urban Village C</option>
+        </select>
+      </div>
+
+      <!-- Postal Code -->
+      <div class="form-group mb-4">
+        <label for="postal_code" class="block text-gray-700 font-semibold mb-2">Postal Code</label>
+        <input type="text" id="postal_code" name="postal_code" class="border rounded-lg p-2 w-full" required>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="form-group mb-4">
+        <label for="phone_number" class="block text-gray-700 font-semibold mb-2">Phone Number</label>
+        <input type="text" id="phone_number" name="phone_number" class="border rounded-lg p-2 w-full" required>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group mb-4">
+        <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+        <input type="email" id="email" name="email" class="border rounded-lg p-2 w-full" required>
+      </div>
+
+      <!-- Website -->
+      <div class="form-group mb-4">
+        <label for="website" class="block text-gray-700 font-semibold mb-2">Website</label>
+        <input type="text" id="website" name="website" class="border rounded-lg p-2 w-full">
+      </div>
+
+      <!-- PLC Name -->
+      <div class="form-group mb-4">
+        <label for="plc_name" class="block text-gray-700 font-semibold mb-2">PLC Name</label>
+        <input type="text" id="plc_name" name="plc_name" class="border rounded-lg p-2 w-full">
+      </div>
+
+      <!-- PLC Phone Number -->
+      <div class="form-group mb-4">
+        <label for="plc_phone_number" class="block text-gray-700 font-semibold mb-2">PLC Phone Number</label>
+        <input type="text" id="plc_phone_number" name="plc_phone_number" class="border rounded-lg p-2 w-full">
+      </div>
+
+      <!-- PLC Email -->
+      <div class="form-group mb-4">
+        <label for="plc_email" class="block text-gray-700 font-semibold mb-2">PLC Email</label>
+        <input type="email" id="plc_email" name="plc_email" class="border rounded-lg p-2 w-full">
+      </div>
+
+      <!-- Submit Button -->
+      <div class="flex justify-end space-x-4">
+        <a th:href="@{/component/insurance_provider}"
+           style="background-color: #a1a1a1; border-radius: 8px;"
+           class="text-white px-4 py-2 shadow border border-transparent transition duration-300 ease-in-out transform hover:scale-105">
+          Back
+        </a>
+        <button type="submit"
+                style="background-color: #36558d; border-radius: 8px;"
+                class="text-white px-4 py-2 shadow border border-transparent transition duration-300 ease-in-out transform hover:scale-105">
+          Save
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div layout:fragment="customScript"></div>
+
+</body>
+</html>

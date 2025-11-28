@@ -1,0 +1,78 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" th:with="currentPage='REQUEST_PROPOSAL'">
+<body>
+
+<div layout:fragment="customCss">
+</div>
+
+<div layout:fragment="pageHeader">
+  <h1>Request Proporsal</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+      <li class="breadcrumb-item active">Request Proporsal</li>
+    </ol>
+  </nav>
+</div>
+
+<div layout:fragment="content">
+  <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="d-flex">
+              <h5 class="card-title">List Of Requested Proposal</h5>
+              <div class="ms-auto pt-3">
+                <a class="btn btn-primary btn-xs" th:href="@{/proposal/request/new}">Add New Proposal</a>
+              </div>
+            </div>
+
+            <hr />
+
+            <table class="table table-borderless table-striped datatable">
+            <thead>
+            <tr>
+              <th>Proporsal Number</th>
+              <th>Marketing</th>
+              <th>Producer</th>
+              <th>Type Of Isurance</th>
+              <th>Client</th>
+              <th>Isurance Period</th>
+              <th>Ccy Rate</th>
+              <th>Premium</th>
+              <th>Nett Premium</th>
+              <th class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="i: ${#numbers.sequence(1, 20)}">
+              <td>PP/0911/011/01</td>
+              <td>Marketing 1</td>
+              <td>Producer 1</td>
+              <td>Type 1</td>
+              <td>Client 1</td>
+              <td>01/01/2024 - 01/01/2025</td>
+              <td>1.00</td>
+              <td>1,000,000</td>
+              <td>900,000</td>
+              <td class="text-center py-1">
+                <button class="btn btn-outline-primary btn-sm"
+                        data-bs-toggle="modal" data-bs-target="#approvalModal">Approval</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div layout:fragment="customScript">
+  <div th:insert="~{fragments/approval_modal :: modal}" th:remove="tag"></div>
+</div>
+
+</body>
+</html>

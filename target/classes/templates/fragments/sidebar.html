@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.springframework.org/security/tags">
+<body>
+<div th:fragment="sidebar">
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}"
+                   th:classappend="${currentPage != 'DASHBOARD'} ? 'collapsed' : null">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"
+                   th:classappend="${parrentMenu != 'COMPONENT'} ? 'collapsed' : null">
+                    <i class="bi bi-menu-button-wide"></i>
+                    <span>Components</span>
+                    <i class="bi ms-auto bi-chevron-down"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav"
+                    th:classappend="${parrentMenu == 'COMPONENT'} ? 'show' : null">
+                    <li>
+                        <a th:href="@{/component/1}" th:classappend="${currentPage == 'COMPONENT1'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Halaman 1</span>
+                        </a>
+                        <a th:href="@{/component/client}" th:classappend="${currentPage == 'MASTER-CLIENT'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Master Client</span>
+                        </a>
+                        <a th:href="@{/component/insurance_provider}" th:classappend="${currentPage == 'MASTER-INSURANCE-PROVIDER'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Master Insurance Provider</span>
+                        </a>
+                        <a th:href="@{/component/master_department}" th:classappend="${currentPage == 'MASTER-DEPARTMENT'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Master Department</span>
+                        </a>
+                        <a th:href="@{/component/master_occupation}" th:classappend="${currentPage == 'MASTER-OCCUPATION'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Master Occupation</span>
+                        </a>
+                        <a th:href="@{/component/master_insurance_type}" th:classappend="${currentPage == 'MASTER-INSURANCE-TYPE'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Master Insurance Type</span>
+                        </a>
+                        <a th:href="@{/component/master_clause}" th:classappend="${currentPage == 'MASTER-CLAUSE'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Master Clause</span>
+                        </a>
+                        <a th:href="@{/component/master_coverage}" th:classappend="${currentPage == 'MASTER-COVERAGE'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Master Coverage</span>
+                        </a>
+                        <a th:href="@{/component/master_wording}" th:classappend="${currentPage == 'MASTER-WORDING'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Master Wording</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/proposal/request/list/add}"
+                   th:classappend="${currentPage != 'REQUEST_PROPOSAL'} ? 'collapsed' : null">
+                    <i class="bi bi-grid"></i>
+                    <span>Request Proporsal</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/proposal/request/list/update}"
+                   th:classappend="${currentPage != 'CLIENT_REQUEST_FORM'} ? 'collapsed' : null">
+                    <i class="bi bi-grid"></i>
+                    <span>Change Request Proporsal</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/placement/list}"
+                   th:classappend="${currentPage != 'PLACEMENT'} ? 'collapsed' : null">
+                    <i class="bi bi-grid"></i>
+                    <span>Placement</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/quotation/list}"
+                   th:classappend="${currentPage != 'QUOTATION'} ? 'collapsed' : null">
+                    <i class="bi bi-grid"></i>
+                    <span>Quotation Slip</span>
+                </a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" data-bs-target="#approval-history-nav" data-bs-toggle="collapse" href="#"
+                   th:classappend="${parrentMenu != 'APPROVAL_HISTORY'} ? 'collapsed' : null">
+                    <i class="bi bi-menu-button-wide"></i>
+                    <span>Approval History</span>
+                    <i class="bi ms-auto bi-chevron-down"></i>
+                </a>
+                <ul id="approval-history-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav"
+                    th:classappend="${parrentMenu == 'APPROVAL_HISTORY'} ? 'show' : null">
+                    <li>
+                        <a th:href="@{/approval/history/request_proporsal}" th:classappend="${currentPage == 'APPROVAL_HISTORY_REQUEST_PROPOSAL'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Request Proporsal</span>
+                        </a>
+                        <a th:href="@{/approval/history/change_request_proporsal}" th:classappend="${currentPage == 'APPROVAL_HISTORY_CHANGE_REQUEST_PROPOSAL'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Change Request Proporsal</span>
+                        </a>
+                        <a th:href="@{/approval/history/placement}" th:classappend="${currentPage == 'APPROVAL_HISTORY_PLACEMENT'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Placement</span>
+                        </a>
+                        <a th:href="@{/approval/history/quotation}" th:classappend="${currentPage == 'APPROVAL_HISTORY_QUOTATION'} ? 'active' : null">
+                            <i class="bi bi-circle"></i><span>Quotation Slip</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </aside>
+</div>
+</body>
+</html>

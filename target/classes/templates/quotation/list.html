@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}" th:with="currentPage='QUOTATION'">
+<body>
+
+<div layout:fragment="customCss">
+</div>
+
+<div layout:fragment="pageHeader">
+  <h1>Quotation Slip</h1>
+  <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+      <li class="breadcrumb-item active">Quotation Slip</li>
+    </ol>
+  </nav>
+</div>
+
+<div layout:fragment="content">
+  <div class="row">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="d-flex">
+              <h5 class="card-title">List Of Quotation</h5>
+              <div class="ms-auto pt-3">
+                <a class="btn btn-primary btn-xs" th:href="@{/quotation/form}">Add New Quotation</a>
+              </div>
+            </div>
+
+            <hr />
+
+            <table class="table table-borderless table-striped datatable">
+            <thead>
+            <tr>
+              <th>Quotation Number</th>
+              <th>Request Form</th>
+              <th>Client Request</th>
+              <th>Placement</th>
+              <th class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="i: ${#numbers.sequence(1, 20)}">
+              <td>123/11/2/2/111</td>
+              <td>Request A</td>
+              <td>-</td>
+              <td>Placement A</td>
+              <td class="text-center py-1">
+                <button class="btn btn-outline-primary btn-sm"
+                        data-bs-toggle="modal" data-bs-target="#approvalModal">Approval</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div layout:fragment="customScript">
+  <div th:insert="~{fragments/approval_modal :: modal}" th:remove="tag"></div>
+</div>
+
+</body>
+</html>

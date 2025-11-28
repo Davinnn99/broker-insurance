@@ -1,0 +1,390 @@
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}" th:with="currentPage='CLIENT_REQUEST_FORM'">
+<body>
+<div layout:fragment="customCss">
+</div>
+
+<div layout:fragment="pageHeader">
+    <h1>Change Request Proporsal Form</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Change Request Proporsal</a></li>
+            <li class="breadcrumb-item active">Form</li>
+        </ol>
+    </nav>
+</div>
+<div layout:fragment="content">
+    <div class="row" id="formSelectData">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Choose Proposal : </h5>
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <select class="form-select" id="proporsal-select">
+                                <option selected>Choose...</option>
+                                <option>Proporsal A</option>
+                                <option>Proporsal B</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="formProposal" style="display:none">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Insurance Form</h5>
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label">Proporsal Number</label>
+                            <input type="text" class="form-control" value="PP/0911/011/01" disabled />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Marketing</label>
+                            <select class="form-select">
+                                <option>Choose...</option>
+                                <option selected>Marketing A</option>
+                                <option>Marketing B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Producer</label>
+                            <select class="form-select">
+                                <option>Choose...</option>
+                                <option selected>Producer A</optionselected>
+                                <option>Producer B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Type of Insurance</label>
+                            <select class="form-select">
+                                <option>Choose...</option>
+                                <option selected>Type A</option>
+                                <option>Type B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Client</label>
+                            <select class="form-select">
+                                <option>Choose...</option>
+                                <option selected>Client A</option>
+                                <option>Client B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Insurance Period</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" placeholder="Start" value="10/01/2024" />
+                                <span class="input-group-text">To</span>
+                                <input type="date" class="form-control" placeholder="End" value="10/12/2025" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Estimated Production Form</h5>
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label">Currency Rate</label>
+                            <input type="number" class="form-control" placeholder="1.00" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Premium to Client</label>
+                            <input type="number" class="form-control" placeholder="1,200,000.00"  />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Nett Premium</label>
+                            <input type="number" class="form-control" placeholder="1,100,000.00"  />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Discount</label>
+                            <input type="number" class="form-control" placeholder="100,000.00" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Brokeage Fee</label>
+                            <input type="number" class="form-control" placeholder="20,000.00" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Addittional Fee</label>
+                            <input type="number" class="form-control" placeholder="10,000.00" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Remark</h5>
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <h5 class="card-title">Risk Information</h5>
+                        <div class="ms-auto pt-3">
+                            <button class="btn btn-outline-primary btn-xs"
+                                    data-bs-toggle="modal" data-bs-target="#riskInfoModal">Add Risk Information</button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Location</th>
+                                <th scope="col" nowrap>Interest Insured</th>
+                                <th scope="col" nowrap>Sum Insured</th>
+                                <th scope="col" nowrap>Existing Insured</th>
+                                <th scope="col" nowrap>Existing Rate</th>
+                                <th scope="col" class="text-center">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Risk 1</td>
+                                <td>Interest 1</td>
+                                <td>70,000,000</td>
+                                <td>Insured 1</td>
+                                <td>200,000</td>
+                                <td class="text-center py-1">
+                                    <button class="btn btn-outline-primary btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#riskInfoModal">Edit</button>
+                                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Risk 2</td>
+                                <td>Interest 2</td>
+                                <td>100,000,000</td>
+                                <td>None</td>
+                                <td>None</td>
+                                <td class="text-center py-1">
+                                    <button class="btn btn-outline-primary btn-sm"
+                                            data-bs-toggle="modal" data-bs-target="#riskInfoModal">Edit</button>
+                                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <a class="btn btn-primary" th:href="@{/proposal/request/list/update}">Submit</a>
+            <button class="btn btn-danger" type="reset">Clear</button>
+        </div>
+    </div>
+
+    <!-- ======================= Modal Risk Info ============================= -->
+    <div class="modal fade" id="riskInfoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Risk Information</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label">Risk Location</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Interest Insured</label>
+                            <select class="form-select">
+                                <option selected>Choose...</option>
+                                <option>Interest A</option>
+                                <option>Interest B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Sum Insured</label>
+                            <input type="number" class="form-control" placeholder="0.00"  />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Premium Currency</label>
+                            <input type="text" class="form-control" />
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Existing Insured</label>
+                            <input type="text" class="form-control" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Existing Premium</label>
+                            <input type="number" class="form-control" placeholder="0.00"  />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Existing Discount</label>
+                            <input type="number" class="form-control" placeholder="0.00" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Claim Report</label>
+                            <input type="text" class="form-control" />
+                        </div>
+
+                        <hr />
+
+                        <div class="col-md-6">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="2">
+                                        <div class="d-flex">
+                                            Unit Details :
+                                            <button class="btn btn-outline-primary btn-sm ms-auto"><i class="bi bi-plus-circle"></i> Add Detail</button>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" value="Name" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="unit 1" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" value="Desc" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="Unit Desc" class="form-control" />
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md-6">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="2">
+                                        <div class="d-flex">
+                                            Unit Documents :
+                                            <button class="btn btn-outline-primary btn-sm ms-auto"><i class="bi bi-plus-circle"></i> Add File</button>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" value="Ktp" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="file" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" value="Sertifikat" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="file" class="form-control" />
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col-md-12">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col" colspan="4">
+                                        <div class="d-flex">
+                                            Premium :
+                                            <button class="btn btn-outline-primary btn-sm ms-auto"><i class="bi bi-plus-circle"></i> Add Premium</button>
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <select class="form-select">
+                                            <option selected>Comprehensive</option>
+                                            <option>TLO</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="100,000,000" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="1.00%" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="1,000,000" class="form-control" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <select class="form-select">
+                                            <option>Comprehensive</option>
+                                            <option selected>TLO</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <input type="text" value="200,000,000" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="0.75%" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" value="1,500,000" class="form-control" />
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-start">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Save Detail</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div layout:fragment="customScript">
+    <script>
+        $("#proporsal-select").on("change", function() {
+            $("#formSelectData").hide();
+            $("#formProposal").show();
+        });
+    </script>
+</div>
+</body>
+</html>

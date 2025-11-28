@@ -1,0 +1,288 @@
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}" th:with="currentPage='QUOTATION'">
+<body>
+<div layout:fragment="customCss">
+</div>
+
+<div layout:fragment="pageHeader">
+    <h1>Quotation Slip</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Quotation Slip</a></li>
+            <li class="breadcrumb-item active">Form</li>
+        </ol>
+    </nav>
+</div>
+
+<div layout:fragment="content">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quotation Info</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Quotation Number</label>
+                            <input type="text" class="form-control" placeholder="" />
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Request Proporsal</label>
+                            <select class="form-select">
+                                <option selected>Choose...</option>
+                                <option>Request A</option>
+                                <option>Request B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Change Request Proporsal</label>
+                            <select class="form-select">
+                                <option selected>Choose...</option>
+                                <option>Request A</option>
+                                <option>Request B</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Placement</label>
+                            <select class="form-select" id="requestFormSelect">
+                                <option selected>Choose...</option>
+                                <option>Placement A</option>
+                                <option>Placement B</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 requestFormDetail" style="display: none">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Request Proporsal Details</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Marketing</label>
+                            <input type="text" value="Marketing A" class="form-control" disabled />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Currency Rate</label>
+                            <input type="text" class="form-control" value="1.00" disabled />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Producer</label>
+                            <input type="text" value="Producer A" class="form-control" disabled />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Premium to Client</label>
+                            <input type="text" class="form-control" value="1,200,000.00" disabled  />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Type of Insurance</label>
+                            <input type="text" value="Type A" class="form-control" disabled />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Nett Premium</label>
+                            <input type="text" class="form-control" value="1,000,000.00" disabled />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Client</label>
+                            <input type="text" value="Client A" class="form-control" disabled />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Discount</label>
+                            <input type="text" class="form-control" value="100,000.00" disabled />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Insurance Period</label>
+                            <input type="text" value="01/02/2024 to 01/02/2025" class="form-control" disabled />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Brokeage Fee</label>
+                            <input type="text" class="form-control" value="25,000.00" disabled />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Addittional Fee</label>
+                            <input type="text" class="form-control" value="10,000.00" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 requestFormDetail" style="display: none">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Vendor</h5>
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" nowrap>Name</th>
+                                <th scope="col" nowrap>Occupation</th>
+                                <th scope="col" nowrap>Phone</th>
+                                <th scope="col" nowrap>PLC Name</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Andi</td>
+                                <td>Manager</td>
+                                <td>082783526</td>
+                                <td>PT. Intermedia</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 requestFormDetail" style="display: none">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Document Slip</h5>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control"
+                            value="Doc-slip-2024.pdf" disabled>
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Download File</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 requestFormDetail" style="display: none">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Premi Calculation</h5>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col" colspan="4">
+                                <div class="d-flex">
+                                    Unit 1 :
+                                </div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-select">
+                                    <option selected>Comprehensive</option>
+                                    <option>TLO</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" value="100,000,000" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="text" value="1.00%" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="text" value="1,000,000" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-select">
+                                    <option>Comprehensive</option>
+                                    <option selected>TLO</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" value="200,000,000" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="text" value="0.75%" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="text" value="1,500,000" class="form-control" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col" colspan="4">
+                                <div class="d-flex">
+                                    Unit 2 :
+                                </div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-select">
+                                    <option selected>Comprehensive</option>
+                                    <option>TLO</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" value="100,000,000" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="text" value="1.00%" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="text" value="1,000,000" class="form-control" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-select">
+                                    <option>Comprehensive</option>
+                                    <option selected>TLO</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" value="200,000,000" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="text" value="0.75%" class="form-control" />
+                            </td>
+                            <td>
+                                <input type="text" value="1,500,000" class="form-control" />
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 requestFormDetail" style="display: none">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Upload Quotation Slip</h5>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control"
+                               value="Doc-slip-2024.pdf" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12">
+            <a class="btn btn-primary" th:href="@{/quotation/list}">Submit</a>
+            <button class="btn btn-danger" type="reset">Clear</button>
+        </div>
+    </div>
+</div>
+
+
+<div layout:fragment="customScript">
+    <script>
+        $("#requestFormSelect").on("change", function() {
+            $(".requestFormDetail").show();
+        });
+    </script>
+</div>
+</body>
+</html>
